@@ -49,8 +49,9 @@ app.post("/api/books", async (req, res) => {
     const data = JSON.parse(content);
 
     // Get the book data from the request body
-    const newBook = req.body;
-    console.log(newBook);
+    const BookData = req.body;
+
+    const newBook = { ...BookData, id: data.length ? data[data.length - 1].id + 1 : 1 }
 
     // Add the new book to the data array
     data.push(newBook);
